@@ -4,8 +4,181 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eBuddy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            margin:0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            background: rgb(65,190,119);
+            background: radial-gradient(circle at bottom, rgba(65,190,119,1) 0%, rgba(39,168,168,1) 100%);
+            background-origin: bottom;
+            /* overflow: hidden; */
+        }
+        input, button {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 900;
+        }
+        .header {
+            text-transform: uppercase;
+            text-align: center;
+            height: 35%;
+            overflow-y: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .header h1 {
+            margin: 0;
+            margin-bottom: 1rem;
+            font-size: 5rem;
+        }
+        .header img {
+            margin: 1rem;
+        }
+        .category {
+            margin: 0 auto;
+            padding: 0 1rem;
+            height: 16.25%;
+            overflow: hidden;
+            transition: height 0.3s ease-out;
+            max-width: 480px;
+        }
+        .category h1 {
+            margin:0;
+            margin-bottom: 1rem;
+        }
+        .category.category--active {
+            height: 35%;
+        }
+        .category.category--inactive {
+            height: 10%;
+        }
+        .category-body {
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+        .category.category--active .category-body {
+            opacity: 1;
+        }
+        .question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .question p {
+            margin: 0;
+            margin-right: 1rem;
+        }
+        .question button {
+            border: 2px solid white;
+            background: none;
+            color: white;
+            padding: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+        .question .no {
+            border-right: none;
+        }
+        .question-buttons {
+            display: flex;
+        }
+    </style>
 </head>
 <body>
-    <h1>asd</h1>
+    <div class="header">
+        <img src="ebuddy-icon.svg" height="48" alt="">
+        <div>daily points</div>
+        <h1>200</h1>
+    </div>
+    <div class="category">
+        <h1>Diet</h1>
+        <div class="category-body">
+            <div class="question">
+                <p> Did you eat from a mass produced chain such as McDonalds?</p>
+                <div class="question-buttons">
+                    <button class="no">NO</button>
+                    <button class="yes">YES</button>
+                </div>
+            </div>
+            <div class="question">
+                <p> Did you eat a meal that had a component of red meat?</p>
+                <div class="question-buttons">
+                    <button class="no">NO</button>
+                    <button class="yes">YES</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="category">
+        <h1>Transportation</h1>
+        <div class="category-body">
+            <div class="question">
+                <p>Did you car pool to work?</p>
+                <div class="question-buttons">
+                    <button class="no">NO</button>
+                    <button class="yes">YES</button>
+                </div>
+            </div>
+            <div class="question">
+                <p>Did you take public transport?</p>
+                <div class="question-buttons">
+                    <button class="no">NO</button>
+                    <button class="yes">YES</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="category">
+        <h1>Electricity</h1>
+        <div class="category-body">
+            <div class="question">
+                <p>Did you use a heater in your home today?</p>
+                <div class="question-buttons">
+                    <button class="no">NO</button>
+                    <button class="yes">YES</button>
+                </div>
+            </div>
+            <div class="question">
+                <p>Did you use a dryer?</p>
+                <div class="question-buttons">
+                    <button class="no">NO</button>
+                    <button class="yes">YES</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="category">
+        <h1>Recycling</h1>
+        <div class="category-body">
+            <div class="question">
+                <p>Did you use a reusable coffee cup when buying coffee?</p>
+                <div class="question-buttons">
+                    <button class="no">NO</button>
+                    <button class="yes">YES</button>
+                </div>
+            </div>
+            <div class="question">
+                <p>Did you buy takeaway food?</p>
+                <div class="question-buttons">
+                    <button class="no">NO</button>
+                    <button class="yes">YES</button>
+                </div>  
+            </div>
+        </div>
+    </div>
+    <script>
+        const categories = document.querySelectorAll('.category')
+        categories.forEach(c => {
+            c.addEventListener('click', e => {
+                categories.forEach(c => c.classList.remove('category--active') || c.classList.add('category--inactive'))
+                e.currentTarget.classList.remove('category--inactive')
+                e.currentTarget.classList.add('category--active')
+            })
+        })
+    </script>
 </body>
 </html>
