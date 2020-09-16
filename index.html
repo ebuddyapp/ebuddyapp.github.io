@@ -306,6 +306,20 @@
             score = DEFAULT_SCORE
         })
 
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.getRegistrations().then(registrations => {
+                    if(registrations.length === 0){
+                        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                        }, function(err) {
+                            console.warn('ServiceWorker registration failed: ', err);
+                        });
+                    }
+                });
+            });
+        }
+
     </script>
 </body>
 </html>
