@@ -1,6 +1,9 @@
 const CACHE_NAME = 'ebuddy-v1';
 const urlsToCache = [
   '/',
+  '/index.html',
+  '/ebuddy-icon.svg',
+  'https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap',
 ];
 
 self.addEventListener('install', function(event) {
